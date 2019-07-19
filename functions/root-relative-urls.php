@@ -43,7 +43,7 @@ function rach5_root_relative_url($input) {
 function rach5_fix_duplicate_subfolder_urls($input) {
 	$output = rach5_root_relative_url($input);
 	preg_match_all('!([^/]+)/([^/]+)!', $output, $matches);
-	if (isset($matches[1]) && isset($matches[2])) {
+	if (isset($matches[1]) && isset($matches[2]) && ! empty($matches[1]) && ! empty($matches[2])) {
 		if ($matches[1][0] === $matches[2][0]) {
 			$output = substr($output, strlen($matches[1][0]) + 1);
 		}
